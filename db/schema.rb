@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_29_171817) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_30_065819) do
   create_table "jobs", force: :cascade do |t|
     t.integer "recruiter_id", null: false
     t.string "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_29_171817) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["recruiter_id"], name: "index_jobs_on_recruiter_id"
   end
 
