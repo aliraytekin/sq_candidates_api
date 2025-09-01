@@ -1,24 +1,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: 127.0.0.1
-  port: 5432
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
 
 development:
   <<: *default
-  database: sq_candidates_api_development
-  username: postgres
-  password: <%= ENV.fetch("PGPASSWORD", "your_strong_password") %>
+  database: postgre_test_development
 
 test:
   <<: *default
   database: sq_candidates_api_test
-  username: postgres
-  password: <%= ENV.fetch("PGPASSWORD", "your_strong_password") %>
 
 production:
   <<: *default
   database: sq_candidates_api_production
-  username: <%= ENV["PGUSER"] %>
-  password: <%= ENV["PGPASSWORD"] %>
+  username: sq_candidates_api
+  password: <%= ENV["SQ_CANDIDATES_API_DATABASE_PASSWORD"] %>
