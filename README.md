@@ -1,24 +1,34 @@
-# README
+# Candidates API (Recruiter Console Backend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend API for the Recruiter Console technical test.  
+It is built with **Ruby on Rails (API mode)** and serves JSON responses to a React frontend.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## 🚀 Features
 
-* System dependencies
+- Recruiters can manage jobs:
+  - Create
+  - Edit (update)
+  - Delete
+  - Publish / Archive
+- Basic search endpoint for jobs (filter by title/location/category).
+- Fake candidates can be proxied via the backend (e.g. using `randomuser.me`).
 
-* Configuration
+---
 
-* Database creation
+## ⚙️ Setup
 
-* Database initialization
+### Prerequisites
+- Ruby 3.3+
+- Bundler
+- PostgreSQL (or SQLite for quick prototyping)
+- Node.js + Yarn (for frontend, optional)
 
-* How to run the test suite
+### Installation
+```bash
+git clone https://github.com/aliraytekin/cq_candidates_api.git
+cd candidates-api
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+bundle install
+rails db:create db:migrate db:seed
