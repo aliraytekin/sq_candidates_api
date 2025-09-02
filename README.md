@@ -2,6 +2,7 @@
 
 This is the backend API for the Recruiter Console technical test.  
 It is built with **Ruby on Rails (API mode)** and serves JSON responses to a React frontend.
+NB: Run rails s first then npm start
 
 ---
 
