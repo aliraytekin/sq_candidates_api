@@ -11,8 +11,7 @@ It is built with **Ruby on Rails (API mode)** and serves JSON responses to a Rea
   - Create
   - Edit (update)
   - Delete
-  - Publish / Archive
-- Basic search endpoint for jobs (filter by title/location/category).
+- Basic search endpoint for jobs (filter by title/location).
 - Fake candidates can be proxied via the backend (e.g. using `randomuser.me`).
 
 ---
@@ -22,7 +21,7 @@ It is built with **Ruby on Rails (API mode)** and serves JSON responses to a Rea
 ### Prerequisites
 - Ruby 3.3+
 - Bundler
-- PostgreSQL (or SQLite for quick prototyping)
+- PostgreSQL
 - Node.js + Yarn (for frontend, optional)
 
 ### Installation
