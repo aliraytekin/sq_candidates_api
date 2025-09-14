@@ -22,7 +22,7 @@ puts "Recruiters created"
 
 20.times do
   Job.create!(
-    recruiter: recruiter.first, # for mocking user auth
+    recruiter: recruiter.first,
     title: Faker::Job.title,
     category: Faker::Job.field,
     employment_type: ["Full-time", "Part-time", "Contract"].sample,
