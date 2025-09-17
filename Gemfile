@@ -49,4 +49,4 @@ gem "devise", "~> 4.9"
 gem "faker"
 gem 'rack-cors'
 gem "searchkick"
-gem "elasticsearch"
+gem "elasticsearch", "~> 8.8"

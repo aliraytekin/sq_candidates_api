@@ -2,14 +2,41 @@ class Api::V1::JobsController < ApplicationController
   before_action :set_job, only: %i[update destroy publish archive]
 
   def index
-    @jobs = Job.all
+    where = {}
 
-    if params[:q].present?
-      q = "%#{params[:q]}%"
-      @jobs = @jobs.where("title ILIKE ? OR location ILIKE ?", q, q)
+    query = params[:q].presence || "*"
+
+    if params[:min_exp].present? || params[:max_exp].present?
+      rng = {}
+
+      rng[:gte] = params[:min_exp] if params[:min_exp].present?
+
+      rng[:lte] = params[:max_exp] if params[:max_exp].present?
+
+      where[:min_experience] = rng
     end
 
-    render json: @jobs
+    if params[:min_salary].present?
+      where[:max_salary] = { gte: params[:min_salary].to_i }
+    end
+
+    if params[:max_salary].present?
+      where[:min_salary] = { lte: params[:max_salary].to_i }
+    end
+
+    results = Job.search(
+      query,
+      where: where,
+      order: { category: :asc },
+      fields: ["title^3", "category^2", "location^2", "years_exp^2", "salary^2", "employment_type"],
+      match: :word_start,
+      misspellings: { below: 3 }
+    )
+
+    render json: {
+      jobs: results.map { |j| j.as_json(only: %i[id title location min_experience max_experience min_salary max_salary
+                                                status employment_type category]) }
+    }
   end
 
   def create
@@ -51,6 +78,7 @@ class Api::V1::JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :category, :employment_type, :location, :posted_at, :status, :description)
+    params.require(:job).permit(:title, :category, :employment_type, :location, :status, :description,
+                                :min_salary, :max_salary, :min_experience, :max_experience, :posted_at)
   end
 end
