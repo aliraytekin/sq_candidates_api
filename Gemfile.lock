@@ -102,10 +102,10 @@ GEM
     elastic-transport (8.4.0)
       faraday (< 3)
       multi_json
-    elasticsearch (9.1.2)
+    elasticsearch (8.19.1)
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 9.1.2)
-    elasticsearch-api (9.1.2)
+      elasticsearch-api (= 8.19.1)
+    elasticsearch-api (8.19.1)
       multi_json
     erb (5.0.2)
     erubi (1.13.1)
@@ -270,7 +270,7 @@ DEPENDENCIES
   bootsnap
   debug
   devise (~> 4.9)
-  elasticsearch
+  elasticsearch (~> 8.8)
   faker
   pg
   puma (>= 5.0)

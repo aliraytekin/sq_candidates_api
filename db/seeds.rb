@@ -28,6 +28,10 @@ puts "Recruiters created"
     employment_type: ["Full-time", "Part-time", "Contract"].sample,
     location: Faker::Address.full_address,
     posted_at: Faker::Date.backward(days: 30),
+    min_experience: rand(0..3),
+    max_experience: rand(4..10),
+    min_salary: rand(25_000..40_000),
+    max_salary: rand(41_000..100_000),
     status: Job.statuses.keys.sample,
     description: Faker::Lorem.paragraph(sentence_count: 5)
   )
